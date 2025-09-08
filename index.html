@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    
+    <!-- META TAGOVI ZA FORSIRANJE GOOGLE TRANSLATE -->
+    <meta name="google" content="translate">
+    <meta name="google-translate-customization" content="automatic">
+    <meta http-equiv="content-language" content="en">
+    <link rel="alternate" hreflang="en" href="">
+    <link rel="alternate" hreflang="hr" href="">
+    <link rel="alternate" hreflang="de" href="">
+    <link rel="alternate" hreflang="it" href="">
+    <link rel="alternate" hreflang="fr" href="">
+
+    <!-- FORCE GOOGLE TRANSLATE SUGGESTION -->
+    <script>
+    // Force Google Translate suggestion for foreign visitors
+    document.addEventListener('DOMContentLoaded', function() {
+        // Detect user's language from browser
+        const userLang = navigator.language || navigator.userLanguage;
+        const pageLang = document.documentElement.lang;
+        
+        console.log('User language:', userLang);
+        console.log('Page language:', pageLang);
+        
+        // If user's language doesn't match page language
+        if (!userLang.startsWith(pageLang)) {
+            // Add Google Translate banner hint
+            const translateHint = document.createElement('div');
+            translateHint.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background: #4285f4;
+                    color: white;
+                    padding: 10px;
+                    text-align: center;
+                    z-index: 10000;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                ">
+                    <span>This page is in English. Would you like to translate it to your language?</span>
+                    <button onclick="window.open('https://translate.google.com/translate?sl=en&tl=' + navigator.language.substr(0,2) + '&u=' + encodeURIComponent(window.location.href), '_blank')" 
+                            style="
+                                background: white;
+                                color: #4285f4;
+                                border: none;
+                                padding: 5px 15px;
+                                margin-left: 10px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                                font-weight: bold;
+                            ">
+                        Translate
+                    </button>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="
+                                background: transparent;
+                                color: white;
+                                border: 1px solid white;
+                                padding: 5px 10px;
+                                margin-left: 5px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                            ">
+                        No thanks
+                    </button>
+                </div>
+            `;
+            
+            document.body.insertBefore(translateHint, document.body.firstChild);
+            
+            // Auto-hide after 15 seconds
+            setTimeout(() => {
+                if (translateHint.parentNode) {
+                    translateHint.remove();
+                }
+            }, 15000);
+        }
+    });
+    </script>
+
+    <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B45HH08SPY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B45HH08SPY');
+    </script>
+
+
+    <!-- PRELOAD BACKGROUND IMAGES -->
+    <link rel="preload" as="image" href="preuzmi (3).jpeg">
+    <link rel="preload" as="image" href="preuzmi (4).jpeg">
+    <link rel="preload" as="image" href="preuzmi (100).jpeg">
+    <link rel="preload" as="image" href="preuzmi (2).jpeg">
+
+
+
+    <style>
+        /* Ostali stilovi ostaju isti... */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .stagger-delay-1 { transition-delay: 0.1s; }
+        .stagger-delay-2 { transition-delay: 0.2s; }
+        .stagger-delay-3 { transition-delay: 0.3s; }
+        .stagger-delay-4 { transition-delay: 0.4s; }
+        
+        /* Loader stilovi */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #000, #1a1a2e, #000);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loader-content h2 {
+            color: #4facfe;
+            font-size: 2em;
+            text-shadow: 0 0 20px #4facfe;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .loading-bar {
+            width: 300px;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .loading-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            width: 0%;
+            animation: load 3s ease-in-out forwards;
+        }
+
+                .hero {
+            background: linear-gradient(135deg, #2c5aa0 0%, #4a90e2 50%, #6bb6ff 100%),
+                        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 15%, transparent 15%),
+                        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 20%, transparent 20%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Dodajte animirane elemente umjesto SVG-a */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 50px 50px, 30px 30px;
+            animation: float 20s infinite linear;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(0px) translateY(0px); }
+        }
+        
+        @keyframes load {
+            to { width: 100%; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { text-shadow: 0 0 20px #4facfe; }
+            50% { text-shadow: 0 0 40px #00f2fe; }
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .intro {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .portfolio-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #4a5568;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .project-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .project-card::after {
+            content: 'See the project';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 2;
+        }
+        
+        .project-card:hover::after {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+            transition: background 0.3s ease;
+        }
+        
+        .project-card:hover::before {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.1));
+        }
+        
+        .project-card.bakery {
+            background-image: url('preuzmi (3).jpeg');
+        }
+        
+        .project-card.climate {
+            background-image: url('preuzmi (4).jpeg');
+        }
+        
+        .project-card.security {
+            background-image: url('preuzmi (100).jpeg');
+        }
+        
+        .project-card.motorcycle {
+            background-image: url('preuzmi (2).jpeg');
+        }
+        
+        .project-card * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+            text-decoration: none;
+        }
+        
+        .project-card h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .project-card p {
+            color: #666;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .contact-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-item h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .contact-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 40px;
+        }
+            
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 2.5em;
+                }
+                
+                h2 {
+                    font-size: 2em;
+                }
+                
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+                
+                .container {
+                    padding: 10px;
+                }
+            }
+    </style>
+</head>
+<body>
+    
+    <div id="loader">
+        <div class="loader-content">
+            <h2>LOADING PORTFOLIO</h2>
+            <div class="loading-bar">
+                <div class="loading-fill"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" id="main-content" style="display: none;">
+        <header class="fade-in-up">
+            <h1>Welcome</h1>
+            <div class="intro">
+                <p>My name is Duje Cuka, I'm a front-end developer from Šibenik, Croatia.
+                   I specialize in creating modern, responsive websites that combine beautiful design with seamless functionality. My goal is to turn your ideas into reality through quality code and attractive design.
+                   I use HTML and CSS languages to bring my designs to life.</p>
+            </div>
+        </header>
+        
+        <section class="portfolio-section fade-in-up">
+            <h2>My projects</h2>
+            <div class="projects-grid">
+                <a href="bakery.html" target="_blank" class="project-card bakery fade-in-left stagger-delay-1">
+                    <h3>Project 1</h3>
+                    <p>Here you can see the example for the bakery website.</p>
+                </a>
+                
+                <a href="index.(klimar).html?v=20250802" target="_blank" class="project-card climate fade-in-right stagger-delay-2">
+                    <h3>Project 2</h3>
+                    <p>Here you can see the example of the website for the company who install climate systems.</p>
+                </a>
+                
+                <a href="MTI-sat-1.html?v=20250802" target="_blank" class="project-card security fade-in-left stagger-delay-3">
+                    <h3>Project 3</h3>
+                    <p>Here you can see the example of the website for the company who install video surveillance and alarm systems.</p>
+                </a>
+                
+                <a href="Yamaha-NEW1.html?v=20250802" target="_blank" class="project-card motorcycle fade-in-right stagger-delay-4">
+                    <h3>Project 4</h3>
+                    <p>Here you can see the example of the website for the company who sell motorcycles, outboard motors and parts thereof.</p>
+                </a>
+            </div>
+        </section>
+        
+        <section class="contact-section fade-in-up">
+            <h2>Contact Me</h2>
+            <div class="contact-info">
+                <div class="contact-item fade-in-left stagger-delay-1">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:duje.cuka@gmail.com" class="contact-link">duje.cuka@gmail.com</a>
+                </div>
+                
+                <div class="contact-item fade-in-left stagger-delay-2">
+                    <h3>📱 Phone</h3>
+                    <a href="tel:+385997724221" class="contact-link">+385 99 772 4221</a>
+                </div>
+                
+                <div class="contact-item fade-in-left stagger-delay-3">
+                    <h3>💼 LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/duje-%C4%8Duka-088413363/" target="_blank" class="contact-link">LinkedIn Profil</a>
+                </div>
+                
+                                <div class="contact-item fade-in-left stagger-delay-4">
+                    <h3>📷 Instagram</h3>
+                    <a href="https://www.instagram.com/duje_c123/" target="_blank" class="contact-link">Instagram Profil</a>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="fade-in-up">
+            <p>&copy; 2025 My portfolio. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 3000);
+        });
+        
+        // Scroll animacija
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+                    
+                // Enhanced Analytics tracking
+                document.addEventListener('DOMContentLoaded', function() {
+                    
+                    // Track project card clicks
+                    document.querySelectorAll('.project-card').forEach(card => {
+                        card.addEventListener('click', function(e) {
+                            const projectName = this.querySelector('h3').textContent;
+                            
+                            gtag('event', 'project_view', {
+                                'project_name': projectName,
+                                'source': 'portfolio_grid',
+                                'page': 'main_portfolio'
+                            });
+                        });
+                    });
+                    
+                    // Track contact clicks
+                    document.querySelectorAll('.contact-link').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            const contactType = this.closest('.contact-item').querySelector('h3').textContent;
+                            
+                            gtag('event', 'contact_click', {
+                                'contact_type': contactType,
+                                'contact_value': this.href,
+                                'page': 'main_portfolio'
+                            });
+                        });
+                    });
+                    
+                    // Track scroll depth
+                    let scrollTracked = false;
+                    window.addEventListener('scroll', function() {
+                        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                        
+                        if (scrollPercent >= 75 && !scrollTracked) {
+                            scrollTracked = true;
+                            gtag('event', 'scroll_depth', {
+                                'percent': 75,
+                                'page': 'main_portfolio'
+                            });
+                        }
+                    });
+                    
+                    // Track page load time
+                    setTimeout(() => {
+                        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                        
+                        gtag('event', 'page_load_time', {
+                            'load_time_ms': loadTime,
+                            'page': 'main_portfolio'
+                        });
+                    }, 1000);
+                });
+    </script>
+</body>
+</html>

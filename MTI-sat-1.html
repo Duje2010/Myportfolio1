@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTI-SAT - Video nadzor i alarmni sustavi</title>
+    
+    <!-- META TAGOVI ZA FORSIRANJE GOOGLE TRANSLATE -->
+    <meta name="google" content="translate">
+    <meta name="google-translate-customization" content="automatic">
+    <meta http-equiv="content-language" content="hr">
+    <link rel="alternate" hreflang="hr" href="">
+    <link rel="alternate" hreflang="en" href="">
+    <link rel="alternate" hreflang="de" href="">
+    <link rel="alternate" hreflang="it" href="">
+    <link rel="alternate" hreflang="fr" href="">
+
+    <!-- FORCE GOOGLE TRANSLATE SUGGESTION -->
+    <script>
+    // Force Google Translate suggestion for foreign visitors
+    document.addEventListener('DOMContentLoaded', function() {
+        // Detect user's language from browser
+        const userLang = navigator.language || navigator.userLanguage;
+        const pageLang = document.documentElement.lang;
+        
+        console.log('User language:', userLang);
+        console.log('Page language:', pageLang);
+        
+        // If user's language doesn't match page language
+        if (!userLang.startsWith(pageLang)) {
+            // Add Google Translate banner hint
+            const translateHint = document.createElement('div');
+            translateHint.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background: #1e3c72;
+                    color: white;
+                    padding: 10px;
+                    text-align: center;
+                    z-index: 10000;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                ">
+                    <span>This page is in Croatian. Would you like to translate it to your language?</span>
+                    <button onclick="window.open('https://translate.google.com/translate?sl=hr&tl=' + navigator.language.substr(0,2) + '&u=' + encodeURIComponent(window.location.href), '_blank')" 
+                            style="
+                                background: white;
+                                color: #1e3c72;
+                                border: none;
+                                padding: 5px 15px;
+                                margin-left: 10px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                                font-weight: bold;
+                            ">
+                        Translate
+                    </button>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="
+                                background: transparent;
+                                color: white;
+                                border: 1px solid white;
+                                padding: 5px 10px;
+                                margin-left: 5px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                            ">
+                        No thanks
+                    </button>
+                </div>
+            `;
+            
+            document.body.insertBefore(translateHint, document.body.firstChild);
+            
+            // Auto-hide after 15 seconds
+            setTimeout(() => {
+                if (translateHint.parentNode) {
+                    translateHint.remove();
+                }
+            }, 15000);
+        }
+    });
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B45HH08SPY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B45HH08SPY');
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)), 
+                        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #1e3c72;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+        }
+
+        /* O nama sekcija */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Usluge sekcije */
+        .services {
+            padding: 80px 0;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Kontakt forma */
+        .contact {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ffd700;
+        }
+
+        .phone-btn {
+            color: #ffe600 !important;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .phone-btn:hover {
+            background: rgba(255, 215, 0, 0.25);
+            border-color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .email-btn {
+            color: #ffd700 !important;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .email-btn:hover {
+            background: rgba(255, 215, 0, 0.25);
+            border-color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                min-height: 300px;
+            }
+        }
+    </style>
+       
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MTI-SAT</div>
+            <ul class="nav-links">
+                <li><a href="#home">Početna</a></li>
+                <li><a href="#about">O nama</a></li>
+                <li><a href="#services">Usluge</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero sekcija -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>MTI-SAT</h1>
+            <p>Vaš pouzdani partner za video nadzor i alarmne sustave u Bilicama, Šibenik</p>
+            <a href="#contact" class="btn">Zatražite ponudu</a>
+        </div>
+    </section>
+
+    <!-- O nama sekcija -->
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">O nama</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Vaš lokalni stručnjak za sigurnost</h3>
+                    <p>MTI-SAT je renomirana tvrtka iz Bilica kraj Šibenika koja se specijalizirala za projektiranje, instalaciju i održavanje suvremenih sustava video nadzora i alarmnih sustava. S dugogodišnjim iskustvom u branši, ponosni smo na naš profesionalni pristup i kvalitetne usluge.</p>
+                    
+                    <p>Naš tim stručnjaka koristi najnoviju tehnologiju i opremu renomiranih proizvođača kako bi osigurali maksimalnu sigurnost vašeg doma ili poslovnog prostora. Razumijemo da je svaki objekt jedinstven, pa pristupamo svakom projektu individualno.</p>
+                    
+                    <p>Pružamo kompletne usluge od početne procjene sigurnosnih potreba, preko projektiranja sustava, profesionalne instalacije, pa sve do redovitog održavanja i tehničke podrške. Vaša sigurnost je naš prioritet!</p>
+                </div>
+                <div class="about-image">
+                    <img src="slikamti.jpg" alt="MTI-SAT tim">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usluge sekcija -->
+    <section id="services" class="services section">
+        <div class="container">
+            <h2 class="section-title">Naše usluge</h2>
+            <div class="service-grid">
+                <!-- Video nadzor -->
+                <div class="service-card">
+                    <div class="service-background" style="background-image: url('preuzmi\ \(14\).jpg');"></div>
+                    <div class="service-overlay">
+                        <h3><i class="fas fa-video"></i> Video nadzor</h3>
+                        <p>Moderni sustavi video nadzora s HD i 4K kamerama za kristalno čistu sliku. Omogućujemo daljinski pristup putem mobilnih aplikacija, noćno snimanje s infracrvenim LED-ovima i automatsko pokretanje snimanja na detekciju pokreta.</p>
+                        <p>Naše kamere su otporne na vremenske uvjete i vandalize, a sustav podržava neograničeno proširivanje broja kamera prema vašim potrebama.</p>
+                    </div>
+                </div>
+
+                <!-- Alarmni sustavi -->
+                <div class="service-card">
+                    <div class="service-background" style="background-image: url('preuzmi\ \(13\).jpg');"></div>
+                    <div class="service-overlay">
+                        <h3><i class="fas fa-shield-alt"></i> Alarmni sustavi</h3>
+                        <p>Napredni alarmni sustavi s bežičnim i žičanim senzorima koji pokrivaju sve ulazne točke vašeg objekta. Sustav uključuje senzore za pokret, otvaranje vrata i prozora, detektore dima i plina.</p>
+                        <p>Mogućnost direktne povezanosti s interventnom službom, SMS i email obavijesti, te upravljanje sustavom putem mobilne aplikacije iz bilo koje točke svijeta.</p>
+                    </div>
+                </div>
+
+                <!-- Održavanje -->
+                <div class="service-card">
+                    <div class="service-background" style="background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="service-overlay">
+                        <h3><i class="fas fa-tools"></i> Održavanje i podrška</h3>
+                        <p>Pružamo potpunu tehničku podršku i redovito održavanje svih instaliranih sustava. Naš tim je dostupan 24/7 za hitne intervencije i rješavanje problema.</p>
+                        <p>Redoviti servisi uključuju čišćenje kamera, provjeru svih komponenti, ažuriranje softvera i proširivanje sustava prema novim potrebama. Garantiramo brz odaziv i stručno rješavanje svih problema.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt sekcija -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Kontaktirajte nas</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informacije</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Adresa:</strong><br>
+                            Bilice, 22000 Šibenik
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Telefon:</strong><br>
+                            <a href="tel:+385098266973" class="phone-btn">
+                                <i class="fas fa-phone"></i> +385 098 266 973
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:info@mti-sat.hr" class="email-btn">
+                                <i class="fas fa-envelope"></i> info@mti-sat.hr
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Radno vrijeme:</strong><br>
+                            Pon-Pet: 08:00 - 16:00<br>
+                            Sub: 08:00 - 13:00
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <h3>Pošaljite upit</h3>
+                    <div class="form-group">
+                        <label for="name">Ime i prezime:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon:</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Vrsta usluge:</label>
+                        <select id="service" name="service" style="width: 100%; padding: 12px; border: none; border-radius: 5px; background: rgba(255,255,255,0.9); font-size: 1rem;">
+                            <option value="">Odaberite uslugu</option>
+                            <option value="video-nadzor">Video nadzor</option>
+                            <option value="alarmni-sustav">Alarmni sustav</option>
+                            <option value="ostalo">Ostalo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Poruka:</label>
+                        <textarea id="message" name="message" placeholder="Opišite vaše potrebe..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Pošalji upit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MTI-SAT. Sva prava pridržana. | Video nadzor i alarmni sustavi - Bilice, Šibenik</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Hvala vam na upitu! Kontaktirati ćemo vas u najkraćem mogućem roku.');
+            this.reset();
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'linear-gradient(135deg, rgba(30, 60, 114, 0.95) 0%, rgba(42, 82, 152, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Enhanced Analytics tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Track contact clicks
+            document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(link => {
+                link.addEventListener('click', function() {
+                    const type = this.href.startsWith('tel:') ? 'phone' : 'email';
+                    gtag('event', 'contact_click', {
+                        'contact_type': type,
+                        'contact_value': this.href,
+                        'page': 'mti-sat'
+                    });
+                });
+            });
+            
+            // Track language changes
+            setTimeout(() => {
+                const translateSelect = document.querySelector('.goog-te-combo');
+                if (translateSelect) {
+                    translateSelect.addEventListener('change', function() {
+                        gtag('event', 'language_change', {
+                            'language': this.value,
+                            'page': 'mti-sat'
+                        });
+                    });
+                }
+            }, 3000);
+            
+            // Track scroll depth
+            let scrollTracked = false;
+            window.addEventListener('scroll', function() {
+                const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                
+                if (scrollPercent >= 75 && !scrollTracked) {
+                    scrollTracked = true;
+                    gtag('event', 'scroll_depth', {
+                        'percent': 75,
+                        'page': 'mti-sat'
+                    });
+                }
+            });
+
+            // Track service interest
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const serviceName = this.querySelector('h3').textContent.trim();
+                    gtag('event', 'service_interest', {
+                        'service_name': serviceName,
+                        'page': 'mti-sat'
+                    });
+                });
+            });
+
+            // Track form submission
+            document.querySelector('.contact-form').addEventListener('submit', function() {
+                gtag('event', 'form_submit', {
+                    'form_type': 'contact_inquiry',
+                    'page': 'mti-sat'
+                });
+            });
+
+            // Track CTA button clicks
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    gtag('event', 'cta_click', {
+                        'button_text': this.textContent.trim(),
+                        'page': 'mti-sat'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
