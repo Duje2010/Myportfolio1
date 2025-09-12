@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pekara Šibenka - Svježi kruhovi, peciva i kolači u Šibeniku. Tradicionalni recepti i najkvalitetniji sastojci. Pozovite +385 98 266 973">
+    <meta name="keywords" content="pekara, Šibenik, kruh, peciva, kolači, tradicionalna pekara, svježi proizvodi">
+    <meta name="author" content="Pekara Šibenka">
+    <title>Pekara Šibenka - Svježi kruhovi i peciva u Šibeniku</title>
+
+    <!-- META TAGOVI ZA FORSIRANJE GOOGLE TRANSLATE -->
+    <meta name="google" content="translate">
+    <meta name="google-translate-customization" content="automatic">
+    <meta http-equiv="content-language" content="hr">
+    <link rel="alternate" hreflang="hr" href="">
+    <link rel="alternate" hreflang="en" href="">
+    <link rel="alternate" hreflang="de" href="">
+    <link rel="alternate" hreflang="it" href="">
+    <link rel="alternate" hreflang="fr" href="">
+
+    <!-- FORCE GOOGLE TRANSLATE SUGGESTION -->
+    <script>
+    // Force Google Translate suggestion for foreign visitors
+    document.addEventListener('DOMContentLoaded', function() {
+        // Detect user's language from browser
+        const userLang = navigator.language || navigator.userLanguage;
+        const pageLang = document.documentElement.lang;
+        
+        console.log('User language:', userLang);
+        console.log('Page language:', pageLang);
+        
+        // If user's language doesn't match page language
+        if (!userLang.startsWith(pageLang)) {
+            // Add Google Translate banner hint
+            const translateHint = document.createElement('div');
+            translateHint.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background: #d2691e;
+                    color: white;
+                    padding: 10px;
+                    text-align: center;
+                    z-index: 10000;
+                    font-family: Arial, sans-serif;
+                    font-size: 14px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                ">
+                    <span>This page is in Croatian. Would you like to translate it to your language?</span>
+                    <button onclick="window.open('https://translate.google.com/translate?sl=hr&tl=' + navigator.language.substr(0,2) + '&u=' + encodeURIComponent(window.location.href), '_blank')" 
+                            style="
+                                background: white;
+                                color: #d2691e;
+                                border: none;
+                                padding: 5px 15px;
+                                margin-left: 10px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                                font-weight: bold;
+                            ">
+                        Translate
+                    </button>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="
+                                background: transparent;
+                                color: white;
+                                border: 1px solid white;
+                                padding: 5px 10px;
+                                margin-left: 5px;
+                                border-radius: 3px;
+                                cursor: pointer;
+                            ">
+                        No thanks
+                    </button>
+                </div>
+            `;
+            
+            document.body.insertBefore(translateHint, document.body.firstChild);
+            
+            // Auto-hide after 15 seconds
+            setTimeout(() => {
+                if (translateHint.parentNode) {
+                    translateHint.remove();
+                }
+            }, 15000);
+        }
+    });
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B45HH08SPY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B45HH08SPY');
+    </script>
+    
+    <style>
+        
+        /* Ostali stilovi */
+        body {
+            font-family: Arial, sans-serif;
+            background: 
+                linear-gradient(135deg, rgba(255, 248, 225, 0.95) 0%, rgba(245, 230, 190, 0.95) 100%),
+                radial-gradient(circle at 25% 25%, rgba(210, 105, 30, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(244, 164, 96, 0.05) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 48%, rgba(210, 105, 30, 0.02) 49%, rgba(210, 105, 30, 0.02) 51%, transparent 52%);
+            background-size: 400px 400px, 200px 200px, 300px 300px, 50px 50px;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #d2691e 0%, #b8541a 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(210, 105, 30, 0.3);
+            position: relative;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q50,5 80,20 Q85,50 80,80 Q50,95 20,80 Q15,50 20,20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 150px 150px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            background: #f4a460;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        
+        .nav-contact-btn {
+            background: #d2691e;
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            font-size: 1em;
+            margin-left: 30px;
+        }
+        
+        .nav-contact-btn:hover {
+            background: #b8541a;
+        }
+        
+        .nav-contact-btn:active {
+            background: #9d4617;
+        }
+        
+        section {
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(210, 105, 30, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h2 {
+            color: #d2691e;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background: #d2691e;
+            color: white;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .social-link:first-of-type:hover {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+        }
+        
+        .social-link:last-of-type:hover {
+            background: #000;
+        }
+        
+        .product-image {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+                
+                /* DODAJTE @media QUERY */
+                @media (max-width: 600px) {
+                    .nav-contact-btn {
+                        display: block;
+                        margin: 10px auto 0 auto;
+                    }
+                    
+                    nav div {
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+                    
+                    section {
+                        margin: 15px;
+                        padding: 20px;
+                    }
+                    
+                    h1 {
+                        font-size: 1.5em;
+                    }
+                    
+                    h2 {
+                        font-size: 1.3em;
+                    }
+                    
+                    iframe {
+                        height: 250px !important;
+                    }
+                    
+                    footer div {
+                        flex-direction: column;
+                        text-align: center;
+                        gap: 10px;
+                    }
+                    
+                    .social-link {
+                        margin: 0 5px;
+                    }
+             }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PEKARA ŠIBENKA</h1>
+    </header>
+    
+    <nav>
+        <div style="display: flex; justify-content: center; align-items: left; position: relative;">
+            <div style="flex: 1; text-align: center;">
+                <a href="#about">O nama</a>
+                <a href="#products">Proizvodi</a>
+                <a href="#contact">Kontakt</a>
+            </div>
+            <a href="tel:+38598266973" class="nav-contact-btn" style="margin-left:auto;">Kontaktirajte nas ovdje</a>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <h2>O nama</h2>
+        <p>Naša pekara je osnovana s ciljem pružanja svježih i ukusnih pekarskih proizvoda. Naš tim stručnjaka svakodnevno priprema raznovrsne kruhove, peciva i kolače koristeći tradicionalne recepte i najkvalitetnije sastojke.</p>
+        <p>Posvećeni smo očuvanju tradicije pekarstva, ali i inovacijama u pripremi naših proizvoda. Naša misija je zadovoljiti sve vaše pekarske želje i potrebe.</p>
+    </section>
+    
+    <section id="products">
+        <h2>Samo neki od naših proizvoda</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-bottom: 30px;">
+            <div style="background: #fff8e1; border-radius: 8px; box-shadow: 0 2px 8px rgba(210,105,30,0.08); padding: 20px; width: 220px; text-align: center;">
+                <h3 style="color: #d2691e; margin-top: 0;">Kruh od raži</h3>
+                <img src="preuzmi.jpg" alt="Kruh od raži" class="product-image">
+                <p>Tradicionalni raženi kruh bogat vlaknima i punog okusa.</p>
+            </div>
+            <div style="background: #fff8e1; border-radius: 8px; box-shadow: 0 2px 8px rgba(210,105,30,0.08); padding: 20px; width: 220px; text-align: center;">
+                <h3 style="color: #d2691e; margin-top: 0;">Bijeli kruh</h3>
+                <img src="preuzmi (8).jpg" alt="Bijeli kruh" class="product-image">
+                <p>Mekani bijeli kruh, idealan za svaki obrok.</p>
+            </div>
+            <div style="background: #fff8e1; border-radius: 8px; box-shadow: 0 2px 8px rgba(210,105,30,0.08); padding: 20px; width: 220px; text-align: center;">
+                <h3 style="color: #d2691e; margin-top: 0;">Integralni kruh</h3>
+                <img src="images.jpg" alt="Integralni kruh" class="product-image">
+                <p>Zdrav i ukusan kruh od cjelovitih žitarica.</p>
+            </div>
+            <div style="background: #fff8e1; border-radius: 8px; box-shadow: 0 2px 8px rgba(210,105,30,0.08); padding: 20px; width: 220px; text-align: center;">
+                <h3 style="color: #d2691e; margin-top: 0;">Peciva</h3>
+                <img src="preuzmi (12).jpg" alt="Peciva" class="product-image">
+                <p>Kiflice, buhtle i razna svježa peciva za svaki dan.</p>
+            </div>
+            <div style="background: #fff8e1; border-radius: 8px; box-shadow: 0 2px 8px rgba(210,105,30,0.08); padding: 20px; width: 220px; text-align: center;">
+                <h3 style="color: #d2691e; margin-top: 0;">Torte i kolači</h3>
+                <img src="preuzmi (10).jpg" alt="Torte i kolači" class="product-image">
+                <p>Štrudle, pite i razni kolači za sve prigode.</p>
+            </div>
+            <div style="background: #fff8e1; border-radius: 8px; box-shadow: 0 2px 8px rgba(210,105,30,0.08); padding: 20px; width: 220px; text-align: center;">
+                <h3 style="color: #d2691e; margin-top: 0;">Slane grickalice</h3>
+                <img src="preuzmi (11).jpg" alt="Slane grickalice" class="product-image">
+                <p>Krekere, perece i ostale slane delicije.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <p>Za narudžbe i upite kontaktirajte nas:</p>
+        <ul>
+            <li>Telefon: <a href="tel:+38598266973" style="color:#d2691e; text-decoration:underline;">+385 98 266 973</a></li>
+            <li>Email: <a href="mailto:info@pekarasibenka.hr" style="color:#d2691e; text-decoration:underline;">info@pekarasibenka.hr</a></li>
+            <li>Adresa: Ulica Kruhova 1, 22000 Šibenik</li>
+        </ul>
+        
+        <h3 style="color: #d2691e; margin-top: 30px;">Naša lokacija</h3>
+        <div style="margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.5234567890123!2d15.895!3d43.7342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDQ0JzAzLjEiTiAxNcKwNTMnNDIuMCJF!5e0!3m2!1shr!2shr!4v1234567890123!5m2!1shr!2shr"
+                width="100%" 
+                height="300" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Lokacija Pekare Šibenka">
+            </iframe>
+        </div>
+        <p style="margin-top: 15px; text-align: center; color: #666; font-size: 0.9em;">
+            <a href="https://goo.gl/maps/XXXXXX" target="_blank" style="color: #d2691e; text-decoration: underline;">
+                Otvori u Google Maps aplikaciji
+            </a>
+        </p>
+    </section>
+
+    <footer>
+        <div style="max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <p>&copy; 2025 Pekara Šibenka. Sva prava pridržana.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <a href="https://www.instagram.com/duje_c123/" target="_blank" class="social-link" title="Pratite nas na Instagramu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                                <a href="https://wa.me/38598266973?text=Pozdrav!%20Interesuje%20me%20vaša%20ponuda%20pekarskih%20proizvoda." target="_blank" class="social-link" title="Kontaktirajte nas preko WhatsAppa">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                    </svg>
+                </a>
+            </div>
+            <div>
+                <p>Radno vrijeme: Pon-Pet 6:00-24:00, Sub 6:00-22:00</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation button functionality
+            const contactBtn = document.querySelector('.nav-contact-btn');
+            if (contactBtn) {
+                contactBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.location.href = 'tel:+38598266973';
+                });
+            }
+            
+            // Navigation scroll functionality
+            document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+             
+                        <!-- Enhanced Analytics tracking -->
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                
+                                // Track contact clicks
+                                document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(link => {
+                                    link.addEventListener('click', function() {
+                                        const type = this.href.startsWith('tel:') ? 'phone' : 'email';
+                                        gtag('event', 'contact_click', {
+                                            'contact_type': type,
+                                            'contact_value': this.href,
+                                            'page': 'bakery'
+                                        });
+                                    });
+                                });
+                                
+                                // Track scroll depth
+                                let scrollTracked = false;
+                                window.addEventListener('scroll', function() {
+                                    const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                                    
+                                    if (scrollPercent >= 75 && !scrollTracked) {
+                                        scrollTracked = true;
+                                        gtag('event', 'scroll_depth', {
+                                            'percent': 75,
+                                            'page': 'bakery'
+                                        });
+                                    }
+                                });
+                    
+                                // Track product interest
+                                document.querySelectorAll('[style*="background: #fff8e1"]').forEach(card => {
+                                    card.addEventListener('click', function() {
+                                        const productName = this.querySelector('h3').textContent.trim();
+                                        gtag('event', 'product_interest', {
+                                            'product_name': productName,
+                                            'page': 'bakery'
+                                        });
+                                    });
+                                });
+                    
+                                // Track social media clicks
+                                document.querySelectorAll('.social-link').forEach(link => {
+                                    link.addEventListener('click', function() {
+                                        const platform = this.href.includes('instagram') ? 'instagram' : 'whatsapp';
+                                        gtag('event', 'social_click', {
+                                            'platform': platform,
+                                            'page': 'bakery'
+                                        });
+                                    });
+                                });
+                    
+                                // Track Google Maps clicks
+                                const iframe = document.querySelector('iframe');
+                                if (iframe) {
+                                    iframe.addEventListener('click', function() {
+                                        gtag('event', 'maps_interaction', {
+                                            'interaction_type': 'iframe_click',
+                                            'page': 'bakery'
+                                        });
+                                    });
+                                }
+                    
+                                // Track external maps link
+                                const mapsLink = document.querySelector('a[href*="goo.gl"]');
+                                if (mapsLink) {
+                                    mapsLink.addEventListener('click', function() {
+                                        gtag('event', 'maps_interaction', {
+                                            'interaction_type': 'external_link',
+                                            'page': 'bakery'
+                                        });
+                                    });
+                                }
+                            });
+                        </script>
+                    
+                        <!-- Structured data for SEO -->
+                        <script type="application/ld+json">
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "Bakery",
+                            "name": "Pekara Šibenka",
+                            "description": "Tradicionalna pekara s najsvježijim kruhovima, pecivima i kolačima u Šibeniku",
+                            "url": "https://www.pekarasibenka.hr",
+                            "telephone": "+38598266973",
+                            "email": "info@pekarasibenka.hr",
+                            "address": {
+                                "@type": "PostalAddress",
+                                "streetAddress": "Ulica Kruhova 1",
+                                "addressLocality": "Šibenik",
+                                "postalCode": "22000",
+                                "addressCountry": "HR"
+                            },
+                            "openingHours": "Mo-Fr 06:00-18:00, Sa 06:00-14:00"
+                        }
+                        </script>
+                    </body>
