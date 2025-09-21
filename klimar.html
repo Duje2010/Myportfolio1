@@ -379,29 +379,35 @@
             padding: 2rem 0;
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
+                @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
-
+        
             .about-content {
                 grid-template-columns: 1fr;
             }
-
+        
             nav ul {
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;      /* PROMIJENITI U ROW */
+                flex-wrap: wrap;          /* DODATI WRAP */
+                justify-content: center;  /* CENTRIRATI */
+                gap: 0.5rem;             /* DODATI GAP */
             }
-
+        
             nav li {
-                margin: 0.2rem 0;
+                margin: 0.2rem 0.5rem;   /* HORIZONTALNI MARGIN */
             }
-
+        
+            nav a {
+                padding: 0.4rem 0.8rem;  /* MANJI PADDING */
+                font-size: 0.9rem;       /* MANJI FONT */
+            }
+        
             .container {
                 padding: 0 15px;
             }
-
+        
             .contact-form {
                 padding: 2rem;
                 margin: 0 1rem;
