@@ -144,13 +144,19 @@
             text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
         }
 
-        .nav-links {
+                .nav-links {
             display: flex;
             list-style: none;
             gap: 0;
+            margin: 0;
+            padding: 0;
         }
-
-                .nav-links a {
+        
+        .nav-links li {
+            margin: 0;
+        }
+        
+        .nav-links li a {
             color: white;
             text-decoration: none;
             padding: 12px 25px;
@@ -160,9 +166,10 @@
             position: relative;
             font-weight: 500;
             overflow: hidden;
+            display: block;
         }
         
-        .nav-links a::before {
+        .nav-links li a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -175,15 +182,16 @@
             border-radius: 25px;
         }
         
-        .nav-links a:hover::before {
+        .nav-links li a:hover::before {
             left: 0;
         }
         
-        .nav-links a:hover {
+        .nav-links li a:hover {
             color: #1e3c72;
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
         }
+        
         /* SPEKTAKULARNI HERO */
         .hero {
             height: 100vh;
@@ -745,8 +753,7 @@
                     </div>
                     <div class="form-group">
                         <label for="service">Vrsta usluge:</label>
-                        <select id="service" name="service" style="width: 100%; padding: 12px; border: none; border-radius: 5px; background: rgba(255,255,255,0.9); font-size: 1rem;">
-                            <option value="">Odaberite uslugu</option>
+                         <select id="service" name="service">
                             <option value="video-nadzor">Video nadzor</option>
                             <option value="alarmni-sustav">Alarmni sustav</option>
                             <option value="ostalo">Ostalo</option>
