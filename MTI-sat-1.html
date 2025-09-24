@@ -764,6 +764,13 @@
             }
         }
     </style>
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // Zamijenite s vašim ključem
+        })();
+    </script>
        
 </head>
 <body>
@@ -946,11 +953,19 @@
             });
         });
 
-        // Form submission
+                // Form submission with EmailJS
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Hvala vam na upitu! Kontaktirati ćemo vas u najkraćem mogućem roku.');
-            this.reset();
+            
+            // Pošaljite email putem EmailJS
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(function() {
+                    alert('Hvala vam na upitu! Email je uspješno poslan. Kontaktirati ćemo vas u najkraćem roku.');
+                    document.querySelector('.contact-form').reset();
+                }, function(error) {
+                    alert('Došlo je do greške prilikom slanja. Molimo pokušajte ponovo ili nas kontaktirajte telefonski.');
+                    console.log('FAILED...', error);
+                });
         });
 
         // Header shadow on scroll
