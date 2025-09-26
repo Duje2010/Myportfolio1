@@ -840,9 +840,10 @@
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         (function(){
-            emailjs.init("YOUR_PUBLIC_KEY"); // Zamijenite s vašim ključem
+            emailjs.init("roemkC9z9ukw2lXG7"); // Zamijenite s vašim ključem
         })();
     </script>
+    <script src="script.js"></script>
        
 </head>
 <body>
@@ -971,7 +972,7 @@
                     </div>
                 </div>
 
-                <form class="contact-form">
+                <form class="contact-form" id="contact-form">
                     <h3>Pošaljite upit</h3>
                     <div class="form-group">
                         <label for="name">Ime i prezime:</label>
@@ -997,7 +998,7 @@
                         <label for="message">Poruka:</label>
                         <textarea id="message" name="message" placeholder="Opišite vaše potrebe..."></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">Pošalji upit</button>
+                    <button type="submit" class="btn-submit" onclick="sendEmail()">Pošalji upit</button>
                 </form>
             </div>
         </div>
