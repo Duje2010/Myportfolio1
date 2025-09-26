@@ -1,11 +1,14 @@
-function sendEmail(){
-    // Validacija polja
+function sendEmail(e){
+    if (e) e.preventDefault(); // Sprečava ponovno učitavanje stranice
+    
+    // Validacija polja - ISPRAVLJENA FIELD IMENA
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value.trim();
-    let subject = document.getElementById("subject").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let service = document.getElementById("service").value;
     let message = document.getElementById("message").value.trim();
 
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !message) {
         alert("Molimo popunite sva polja!");
         return;
     }
@@ -13,7 +16,8 @@ function sendEmail(){
     let parms = {
         name: name,
         email: email,
-        subject: subject,
+        phone: phone,
+        service: service,
         message: message
     };
 
