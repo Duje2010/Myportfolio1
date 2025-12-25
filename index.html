@@ -101,6 +101,7 @@
     <link rel="preload" as="image" href="preuzmi (4).jpeg">
     <link rel="preload" as="image" href="preuzmi (100).jpeg">
     <link rel="preload" as="image" href="preuzmi (2).jpeg">
+    <link rel="preload" as="image" href="preuzmi elan.jpeg">
 
 
 
@@ -362,10 +363,62 @@
         .project-card.motorcycle {
             background-image: url('preuzmi (2).jpeg');
         }
+
+        .project-card.Elanko {
+            background-image: url('preuzmi elan. jpeg');
+        }
         
         .project-card * {
             position: relative;
             z-index: 1;
+        }
+
+        /* Lightbox / modal styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .lightbox-overlay.active { display: flex; }
+
+        .lightbox-content {
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            max-height: 800px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lightbox-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            z-index: 2;
         }
         
         .project-card:hover {
@@ -512,8 +565,21 @@
                     <h3>Project 4</h3>
                     <p>Here you can see the example of the website for the company who sell motorcycles, outboard motors and parts thereof.</p>
                 </a>
+                
+                <a href="Elanko.html" class="project-card elanko fade-in-left stagger-delay-5">
+                    <h3>Project 5</h3>
+                    <p>A company that offers sightseeing tours of all the beauties of the Adriatic Sea .</p>
+                </a>
             </div>
         </section>
+        
+        <!-- Lightbox modal for project previews -->
+        <div id="lightbox-overlay" class="lightbox-overlay" aria-hidden="true">
+            <div class="lightbox-content" role="dialog" aria-modal="true">
+                <button id="lightbox-close" class="lightbox-close">Close</button>
+                <iframe id="lightbox-iframe" class="lightbox-iframe" src="about:blank" title="Project preview"></iframe>
+            </div>
+        </div>
         
         <section class="contact-section fade-in-up">
             <h2>Contact Me</h2>
@@ -625,6 +691,46 @@
                         });
                     }, 1000);
                 });
+    </script>
+    <script>
+        // Lightbox to preview project pages inside an iframe
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('lightbox-overlay');
+            const iframe = document.getElementById('lightbox-iframe');
+            const closeBtn = document.getElementById('lightbox-close');
+
+            function openLightbox(url) {
+                iframe.src = url;
+                overlay.classList.add('active');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                overlay.setAttribute('aria-hidden', 'true');
+                iframe.src = 'about:blank';
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const url = this.getAttribute('href');
+                    openLightbox(url);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeLightbox();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+        });
     </script>
 </body>
 </html>
