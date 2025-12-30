@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Naše usluge — Elektroinstalacije</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Elektroinstalacije</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Meni</button>
+      <nav id="main-nav" class="main-nav">
+        <a href="index.html">Početna</a>
+        <a href="about.html">O nama</a>
+        <a href="services.html">Naše usluge</a>
+        <a href="contact.html" class="btn">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h1>Naše usluge</h1>
+      <div class="grid services-grid">
+        <article class="service-card">
+          <h3>Izrada elektroinstalacija</h3>
+          <p>Kompletne instalacije za stanove, kuće i poslovne prostore. Radimo prema važećim normama i pravilima struke.</p>
+        </article>
+        <article class="service-card">
+          <h3>Adaptacija i rekonstrukcija</h3>
+          <p>Modernizacija i zamjena dotrajalih instalacija, optimizacija i sigurnosna unapređenja.</p>
+        </article>
+        <article class="service-card">
+          <h3>Servis i održavanje</h3>
+          <p>Brzi servis, hitne intervencije i redovna održavanja sustava.</p>
+        </article>
+        <article class="service-card">
+          <h3>Pametne kuće</h3>
+          <p>Integracija rasvjete, grijanja i sigurnosnih sustava u pametne sustave koji štede energiju i povećavaju udobnost.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Elektroinstalacije</strong>
+        <p>Profesionalno i sigurno — kontaktirajte nas za ponudu.</p>
+      </div>
+      <nav>
+        <a href="index.html">Početna</a>
+        <a href="about.html">O nama</a>
+        <a href="services.html">Usluge</a>
+        <a href="contact.html">Kontakt</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-nav');
+    if(toggle && nav){
+      toggle.addEventListener('click', ()=>{
+        nav.classList.toggle('active');
+        toggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+      });
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', ()=>{ nav.classList.remove('active'); toggle.setAttribute('aria-expanded', 'false'); });
+      });
+      window.addEventListener('resize', ()=>{ if(window.innerWidth>=700){ nav.classList.remove('active'); } });
+    }
+  })();
+  </script>
+</body>
+</html>
