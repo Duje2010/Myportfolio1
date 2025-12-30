@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kontakt — Elektroinstalacije</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Elektroinstalacije</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Meni</button>
+      <nav id="main-nav" class="main-nav">
+        <a href="index.html">Početna</a>
+        <a href="about.html">O nama</a>
+        <a href="services.html">Naše usluge</a>
+        <a href="contact.html" class="btn">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="contact" style="padding:2rem 0">
+      <h1 style="color:var(--color-primary);margin-bottom:.5rem">Kontakt</h1>
+      <p style="color:var(--muted);margin-bottom:2rem">Pošaljite nam upit i javit ćemo se s ponudom.</p>
+
+      <form action="https://formspree.io/f/mpqzezkv" method="POST" class="form" style="background:linear-gradient(135deg, var(--color-light) 0%, #fff 100%);padding:2rem;border-radius:12px;border-left:4px solid var(--color-primary)">
+        <input type="hidden" name="_next" value="thank-you.html">
+        <label>
+          Ime i prezime
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="_replyto" required>
+        </label>
+
+        <label>
+          Naslov
+          <input type="text" name="subject">
+        </label>
+
+        <label>
+          Poruka
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <input type="hidden" name="_subject" value="Nova poruka sa web stranice">
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="form-row">
+          <button type="submit" class="btn primary">Pošalji</button>
+          <button type="reset" class="btn outline">Poništi</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Elektroinstalacije</strong>
++        <p>Profesionalno i sigurno — kontaktirajte nas za ponudu.</p>
+      </div>
+      <nav>
+        <a href="index.html">Početna</a>
+        <a href="about.html">O nama</a>
+        <a href="services.html">Usluge</a>
+        <a href="contact.html">Kontakt</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-nav');
+    if(toggle && nav){
+      toggle.addEventListener('click', ()=>{
+        nav.classList.toggle('active');
+        toggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+      });
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', ()=>{ nav.classList.remove('active'); toggle.setAttribute('aria-expanded', 'false'); });
+      });
+      window.addEventListener('resize', ()=>{ if(window.innerWidth>=700){ nav.classList.remove('active'); } });
+    }
+  })();
+  </script>
+</body>
+</html>

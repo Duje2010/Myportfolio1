@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hvala — Elektroinstalacije</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <meta http-equiv="refresh" content="5;url=index.html">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Elektroinstalacije</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Meni</button>
+      <nav id="main-nav" class="main-nav">
+        <a href="index.html">Početna</a>
+        <a href="about.html">O nama</a>
+        <a href="services.html">Naše usluge</a>
+        <a href="contact.html" class="btn">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="min-height:60vh;display:flex;align-items:center;justify-content:center">
+    <section style="text-align:center;max-width:600px;padding:3rem 1rem">
+      <div style="width:80px;height:80px;background:var(--color-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-size:3rem">✓</div>
+      <h1 style="color:var(--color-primary);margin-bottom:1rem">Hvala na poruci!</h1>
+      <p style="font-size:1.1rem;color:var(--muted);margin-bottom:2rem">
+        Primili smo vašu poruku i odgovorit ćemo vam u najkraćem mogućem roku. 
+        Očekujte naš odgovor u sljedećih 24 sata.
+      </p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="index.html" class="btn primary">Povratak na početnu</a>
+        <a href="services.html" class="btn outline">Pogledaj usluge</a>
+      </div>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:2rem">
+        Automatski ćete biti preusmjereni na početnu stranicu za 5 sekundi...
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>Elektroinstalacije</strong>
+        <p>Profesionalno i sigurno — kontaktirajte nas za ponudu.</p>
+      </div>
+      <nav>
+        <a href="index.html">Početna</a>
+        <a href="about.html">O nama</a>
+        <a href="services.html">Usluge</a>
+        <a href="contact.html">Kontakt</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-nav');
+    if(toggle && nav){
+      toggle.addEventListener('click', ()=>{
+        nav.classList.toggle('active');
+        toggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+      });
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        link.addEventListener('click', ()=>{ nav.classList.remove('active'); toggle.setAttribute('aria-expanded', 'false'); });
+      });
+      window.addEventListener('resize', ()=>{ if(window.innerWidth>=700){ nav.classList.remove('active'); } });
+    }
+  })();
+  </script>
+</body>
+</html>
